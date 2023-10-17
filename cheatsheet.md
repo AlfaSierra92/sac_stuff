@@ -37,7 +37,18 @@ Nel file sample_MM1.ini invece c'è il setup della simulazione con vari valori n
 In particolare si possono creare varie simulazioni con vari parametri. 
 Ogni simulazione ha un nome tra parentesi quadre (esempio -> [NOME SIM 1]).
 
-*Per fare vari run e non dover scrivere tante righe, si fa uso del linguaggio di templating mako.*
+**FILE .ini.mako di configurazione (esempio sample_MM1.ini.mako)**
+
+Per fare vari run e non dover scrivere tante righe, si fa uso del linguaggio di templating mako; si genera da esso il rispettivo file *.ini* col comando `update_template.py`.
+
+**FILE configXXX.json di configurazione (esempio configsample_MM1.json)**
+
+File di configurazione .json (esempio: configMM1.json) che dentro ha un dizionario con i dati selezionati da raccogliere e il possibile tipo di aggregazione da fare; serve per il parsing dei dati.
+
+**FILE database configXXX.db(esempio sample_MM1.db)**
+
+Database contenente i risultati delle simulazioni effettuate col `make run`.
+
 
 ------------
 
