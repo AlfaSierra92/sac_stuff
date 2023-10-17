@@ -1,0 +1,78 @@
+{
+    "scenario_schema": {
+        "rho": {"pattern": "**.rho", "type": "real"},
+        "K": {"pattern": "**.K", "type": "int"}
+    },
+    "metrics": {
+        "TotalJobs": {"module": "**.src", "scalar_name": "created:last" ,"aggr": ["none"]},
+        "DroppedJobs": {"module": "**.srv", "scalar_name": "dropped:count" ,"aggr": ["none"]},
+        "QLen": {"module": "**.srv", "scalar_name": "queueLength:timeavg" ,"aggr": ["none"]},
+        "Utilization": {"module": "**.srv", "scalar_name": "busy:timeavg" ,"aggr": ["none"]},
+        "PQueue": {"module": "**.sink", "scalar_name": "queuesVisited:mean" ,"aggr": ["none"]},
+        "ServiceTime": {"module": "**.sink", "scalar_name": "totalServiceTime:mean" ,"aggr": ["none"]},
+        "WaitingTime": {"module": "**.sink", "scalar_name": "totalQueueingTime:mean" ,"aggr": ["none"]},
+        "ResponseTime": {"module": "**.sink", "scalar_name": "lifeTime:mean" ,"aggr": ["none"]}
+    },
+    "analyses": {
+        "SensRho-Kinf": {
+            "outfile": "results/loadcurve_inf.data",
+            "scenarios": {
+                "fixed": {"K": "-1"},
+                "range": ["rho"]
+            },
+            "metrics": [
+                {"metric": "TotalJobs", "aggr": "none"},
+                {"metric": "DroppedJobs", "aggr": "none"},
+                {"metric": "PQueue", "aggr": "none"},
+                {"metric": "ServiceTime", "aggr": "none"},
+                {"metric": "WaitingTime", "aggr": "none"},
+                {"metric": "ResponseTime", "aggr": "none"}
+                    ]
+        },
+        "SensRho-K10": {
+            "outfile": "results/loadcurve_K10.data",
+            "scenarios": {
+                "fixed": {"K": "10"},
+                "range": ["rho"]
+            },
+            "metrics": [
+                {"metric": "TotalJobs", "aggr": "none"},
+                {"metric": "DroppedJobs", "aggr": "none"},
+                {"metric": "PQueue", "aggr": "none"},
+                {"metric": "ServiceTime", "aggr": "none"},
+                {"metric": "WaitingTime", "aggr": "none"},
+                {"metric": "ResponseTime", "aggr": "none"}
+                    ]
+        },
+        "SensRho-K7": {
+            "outfile": "results/loadcurve_K7.data",
+            "scenarios": {
+                "fixed": {"K": "7"},
+                "range": ["rho"]
+            },
+            "metrics": [
+                {"metric": "TotalJobs", "aggr": "none"},
+                {"metric": "DroppedJobs", "aggr": "none"},
+                {"metric": "PQueue", "aggr": "none"},
+                {"metric": "ServiceTime", "aggr": "none"},
+                {"metric": "WaitingTime", "aggr": "none"},
+                {"metric": "ResponseTime", "aggr": "none"}
+                    ]
+        },
+        "SensRho-K5": {
+            "outfile": "results/loadcurve_K5.data",
+            "scenarios": {
+                "fixed": {"K": "5"},
+                "range": ["rho"]
+            },
+            "metrics": [
+                {"metric": "TotalJobs", "aggr": "none"},
+                {"metric": "DroppedJobs", "aggr": "none"},
+                {"metric": "PQueue", "aggr": "none"},
+                {"metric": "ServiceTime", "aggr": "none"},
+                {"metric": "WaitingTime", "aggr": "none"},
+                {"metric": "ResponseTime", "aggr": "none"}
+                    ]
+        }
+    }
+}
