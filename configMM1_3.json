@@ -1,0 +1,38 @@
+{
+    "scenario_schema": {
+        "lambda1": {"pattern": "**.lambda1", "type": "real"},
+        "lambda2": {"pattern": "**.lambda2", "type": "real"},
+        "lambda3": {"pattern": "**.lambda3", "type": "real"}
+    },
+    "metrics": {
+        "PQueue": {"module": "**.sink", "scalar_name": "queuesVisited:mean" ,"aggr": ["none"]},
+        "ServiceTime": {"module": "**.sink", "scalar_name": "totalServiceTime:mean" ,"aggr": ["none"]},
+        "WaitingTime": {"module": "**.sink", "scalar_name": "totalQueueingTime:mean" ,"aggr": ["none"]},
+        "ResponseTime": {"module": "**.sink", "scalar_name": "lifeTime:mean" ,"aggr": ["none"]}
+    },
+    "histograms": {
+        "SinkTime": {"module": "**.sink", "histogram_name": "lifeTime:histogram"}
+    },
+    "analyses": {
+        "Hist_Low": {
+            "outfile": "results/MM1_3_Low_SinkTimeH.data",
+            "scenario": {"lambda1": "1.5", "lambda2": "1.5", "lambda3": "1.5"},
+            "histogram": "SinkTime"
+        },        
+        "Hist_Hi": {
+            "outfile": "results/MM1_3_Hi_SinkTimeH.data",
+            "scenario": {"lambda1": "4.5", "lambda2": "4.5", "lambda3": "4.5"},
+            "histogram": "SinkTime"
+        },        
+        "Hist_Balanced": {
+            "outfile": "results/MM1_3_Balanced_SinkTimeH.data",
+            "scenario": {"lambda1": "3.5", "lambda2": "3.5", "lambda3": "3.5"},
+            "histogram": "SinkTime"
+        },        
+        "Hist_Unbalanced": {
+            "outfile": "results/MM1_3_Unbalanced_SinkTimeH.data",
+            "scenario": {"lambda1": "3.5", "lambda2": "4.5", "lambda3": "1.5"},
+            "histogram": "SinkTime"
+        }       
+    }
+}
