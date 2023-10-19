@@ -13,29 +13,19 @@ sim-time-limit = 10000s
 # parameters of the simulation
 [Config MM1Base]
 description = "Global scenario"
-**.srv.queueLength.result-recording-modes = +histogram
+**.srv1.queueLength.result-recording-modes = +histogram
+**.srv2.queueLength.result-recording-modes = +histogram
+**.srv3.queueLength.result-recording-modes = +histogram
 **.sink.lifeTime.result-recording-modes = +histogram
 
-[Config MM1_3_Low]
+%for lambda1 in [1.5, 3, 5]:
+%for lambda2 in [1.5, 3, 5]:
+%for lambda3 in [1.5, 3, 5]:
+[Config MM1_3_l1_${"%03d" % int(lambda1)}_l2_${"%03d" % int(lambda2)}_l3_${"%03d" % int(lambda3)}]
 extends=MM1Base
-**.lambda1=1.5
-**.lambda2=1.5
-**.lambda3=1.5
-
-[Config MM1_3_Balanced]
-extends=MM1Base
-**.lambda1=3.5
-**.lambda2=3.5
-**.lambda3=3.5
-
-[Config MM1_3_Hi]
-extends=MM1Base
-**.lambda1=4.5
-**.lambda2=4.5
-**.lambda3=4.5
-
-[Config MM1_3_Unbalanced]
-extends=MM1Base
-**.lambda1=3.5
-**.lambda2=4.5
-**.lambda3=1.5
+**.lambda1 = ${lambda1}
+**.lambda2 = ${lambda2}
+**.lambda3 = ${lambda3}
+%endfor
+%endfor
+%endfor

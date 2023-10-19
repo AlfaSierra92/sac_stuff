@@ -26,7 +26,10 @@ import org.omnetpp.queueing.Source;
 network MM1_3
 {
 	parameters:
-		double mu = default(10);
+	    int k1 = default(5);
+	    int k2 = default(5);
+	    int k3 = default(5);
+		double mu = default(10); //RIMANE COSTANTE IN QUESTA SIM.
 		double lambda1 = default(4); //tasso di arrivo 1
 		double lambda2 = default(4); //tasso di arrivo 2
 		double lambda3 = default(4); //tasso di arrivo 3
@@ -36,6 +39,9 @@ network MM1_3
 		srv1.serviceTime = 1s * exponential(1/mu);
 		srv2.serviceTime = 1s * exponential(1/mu);
 		srv3.serviceTime = 1s * exponential(1/mu);
+		srv1.capacity = k1;
+		srv2.capacity = k2;
+		srv3.capacity = k3;
 	submodules:
 		src1: Source;
 		src2: Source;

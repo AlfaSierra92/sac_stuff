@@ -5,6 +5,12 @@
         "lambda3": {"pattern": "**.lambda3", "type": "real"}
     },
     "metrics": {
+        "TotalJobs1": {"module": "**.src1", "scalar_name": "created:last" ,"aggr": ["none"]},
+        "TotalJobs2": {"module": "**.src2", "scalar_name": "created:last" ,"aggr": ["none"]},
+        "TotalJobs3": {"module": "**.src3", "scalar_name": "created:last" ,"aggr": ["none"]},
+        "DroppedJobs1": {"module": "**.srv1", "scalar_name": "dropped:count" ,"aggr": ["none"]},
+        "DroppedJobs2": {"module": "**.srv2", "scalar_name": "dropped:count" ,"aggr": ["none"]},
+        "DroppedJobs3": {"module": "**.srv3", "scalar_name": "dropped:count" ,"aggr": ["none"]},
         "PQueue": {"module": "**.sink", "scalar_name": "queuesVisited:mean" ,"aggr": ["none"]},
         "ServiceTime": {"module": "**.sink", "scalar_name": "totalServiceTime:mean" ,"aggr": ["none"]},
         "WaitingTime": {"module": "**.sink", "scalar_name": "totalQueueingTime:mean" ,"aggr": ["none"]},
@@ -14,25 +20,24 @@
         "SinkTime": {"module": "**.sink", "histogram_name": "lifeTime:histogram"}
     },
     "analyses": {
-        "Hist_Low": {
-            "outfile": "results/MM1_3_Low_SinkTimeH.data",
-            "scenario": {"lambda1": "1.5", "lambda2": "1.5", "lambda3": "1.5"},
-            "histogram": "SinkTime"
-        },        
-        "Hist_Hi": {
-            "outfile": "results/MM1_3_Hi_SinkTimeH.data",
-            "scenario": {"lambda1": "4.5", "lambda2": "4.5", "lambda3": "4.5"},
-            "histogram": "SinkTime"
-        },        
-        "Hist_Balanced": {
-            "outfile": "results/MM1_3_Balanced_SinkTimeH.data",
-            "scenario": {"lambda1": "3.5", "lambda2": "3.5", "lambda3": "3.5"},
-            "histogram": "SinkTime"
-        },        
-        "Hist_Unbalanced": {
-            "outfile": "results/MM1_3_Unbalanced_SinkTimeH.data",
-            "scenario": {"lambda1": "3.5", "lambda2": "4.5", "lambda3": "1.5"},
-            "histogram": "SinkTime"
-        }       
+        "SensRho-Kinf": {
+            "outfile": "results/MM1_3_lamda3.data",
+            "scenarios": {
+                "fixed": {"lambda1": "5", "lambda2": "5"},
+                "range": ["lambda3"]
+            },
+            "metrics": [
+                {"metric": "TotalJobs1", "aggr": "none"},
+                {"metric": "TotalJobs2", "aggr": "none"},
+                {"metric": "TotalJobs3", "aggr": "none"},
+                {"metric": "DroppedJobs1", "aggr": "none"},
+                {"metric": "DroppedJobs2", "aggr": "none"},
+                {"metric": "DroppedJobs3", "aggr": "none"},
+                {"metric": "PQueue", "aggr": "none"},
+                {"metric": "ServiceTime", "aggr": "none"},
+                {"metric": "WaitingTime", "aggr": "none"},
+                {"metric": "ResponseTime", "aggr": "none"}
+                    ]
+        }      
     }
 }
