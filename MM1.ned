@@ -21,7 +21,7 @@ import org.omnetpp.queueing.Source;
 
 network MM1
 {
-	parameters:
+	parameters: // definisco dei valori di default che poi posso cambiare "dinamicamente" via file *.ini
 		int K = default(10); // numero massimo di clienti che puo' gestire il sistema (coda)
 		double rho = default(0.8); // utilizzazione
 		double mu = default(10); // tasso di partenza
@@ -36,7 +36,7 @@ network MM1
 		// perche' 1/mu? Mu e' il tasso di servizio quindi il suo reciproco e' il tempo di servizio (tempo impiegato ad espletare l'ordine)
 		srv.serviceTime = 1s * exponential(1/mu); 
 		
-		srv.capacity = K;
+		srv.capacity = K; // capacita' coda (finita in questo caso)
 	submodules:
 		src: Source; // Rappresenta la sorgente dei clienti, che genera i clienti con intervalli di tempo casuali tra gli arrivi.
 		srv: Queue; // Rappresenta la coda (o il server) in cui i clienti attendono il servizio.
