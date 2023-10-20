@@ -1,0 +1,29 @@
+{
+    "scenario_schema": {
+        "lambda": {"pattern": "**.lambda", "type": "real"},
+        "mu_n": {"pattern": "**.mu_n", "type": "real"},
+        "mu_c": {"pattern": "**.mu_c", "type": "real"},
+        "mu_d": {"pattern": "**.mu_d", "type": "real"}
+    },
+    "metrics": {
+        "ResponseTime": {"module": "**.sink", "scalar_name": "lifeTime:mean" ,"aggr": ["none"]},
+        "Utilization_net": {"module": "**.net", "scalar_name": "busy:timeavg" ,"aggr": ["none"]},
+        "Utilization_cpu": {"module": "**.cpu", "scalar_name": "busy:timeavg" ,"aggr": ["none"]},
+        "Utilization_disk": {"module": "**.disk", "scalar_name": "busy:timeavg" ,"aggr": ["none"]}
+    },
+    "analyses": {
+        "fixed_values": {
+            "outfile": "results/server_result.data",
+            "scenarios": {
+                "fixed": {"lambda": "6", "mu_n": "20", "mu_c": "10", "mu_d": "15"},
+                "range": []
+            },
+            "metrics": [
+                {"metric": "ResponseTime", "aggr": "none"},
+                {"metric": "Utilization_net", "aggr": "none"},
+                {"metric": "Utilization_cpu", "aggr": "none"},
+                {"metric": "Utilization_disk", "aggr": "none"}
+                    ]
+        }
+    }
+}
