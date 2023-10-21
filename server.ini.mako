@@ -18,9 +18,12 @@ description = "Global scenario"
 **.disk.queueLength.result-recording-modes = +histogram
 **.sink.lifeTime.result-recording-modes = +histogram
 
-[Config server1]
+%for Lambda in [6, 7, 7.1, 7.2, 7.3, 7.4, 7.5, 7.6, 7.7, 7.8, 7.9, 8, 8.5, 10, 12, 15]:
+
+[Config server1_lambda${"%03d" % int(Lambda*100)}]
 extends=serverBase
-**.lambda=6
+**.lambda=${Lambda}
 **.mu_n=20
 **.mu_c=10
 **.mu_d=15
+%endfor

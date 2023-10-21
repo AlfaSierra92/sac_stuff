@@ -5,10 +5,10 @@ import org.omnetpp.queueing.Source;
 network server
 {
     parameters:
-        double lambda = default(6);
-        double mu_n = default(20);
-        double mu_c = default(10);
-        double mu_d = default(15);
+        double lambda = default(6); // tasso di arrivo
+        double mu_n = default(20); // tasso di partenza rete
+        double mu_c = default(10); // tasso di partenza cpu
+        double mu_d = default(15); // tasso di partenza disco
 
         src.interArrivalTime = 1s * exponential(1/lambda);
         net.serviceTime = 1s * exponential(1/mu_n); 
@@ -32,5 +32,3 @@ network server
 // tr_i = 1/(mu_i - lambda_i)
 //
 // 
-// Quando si ha una variabile Gaussiana la confidenza si esprime come:
-// mu +- rho -> 67 %
