@@ -1,0 +1,66 @@
+{
+    "scenario_schema": {
+        "lambda": {"pattern": "**.lambda", "type": "real"},
+        "mu_n": {"pattern": "**.mu_n", "type": "real"},
+        "mu_c": {"pattern": "**.mu_c", "type": "real"},
+        "mu_d": {"pattern": "**.mu_d", "type": "real"}
+    },
+    "metrics": {
+        "ResponseTime_sink": {"module": "**.sink", "scalar_name": "lifeTime:mean" ,"aggr": ["none"]},
+        "Utilization_net": {"module": "**.net", "scalar_name": "busy:timeavg" ,"aggr": ["none"]},
+        "Utilization_cpu": {"module": "**.cpu", "scalar_name": "busy:timeavg" ,"aggr": ["none"]},
+        "Utilization_cpu2": {"module": "**.cpu2", "scalar_name": "busy:timeavg" ,"aggr": ["none"]},
+        "Utilization_disk": {"module": "**.disk", "scalar_name": "busy:timeavg" ,"aggr": ["none"]},
+        "DroppedJobs_net": {"module": "**.net", "scalar_name": "dropped:count" ,"aggr": ["none"]},
+        "DroppedJobs_cpu": {"module": "**.cpu", "scalar_name": "dropped:count" ,"aggr": ["none"]},
+        "DroppedJobs_disk": {"module": "**.disk", "scalar_name": "dropped:count" ,"aggr": ["none"]},
+        "QLen_net": {"module": "**.net", "scalar_name": "queueLength:timeavg" ,"aggr": ["none"]},
+        "QLen_cpu": {"module": "**.cpu", "scalar_name": "queueLength:timeavg" ,"aggr": ["none"]},
+        "QLen_cpu2": {"module": "**.cpu2", "scalar_name": "queueLength:timeavg" ,"aggr": ["none"]},
+        "QLen_disk": {"module": "**.disk", "scalar_name": "queueLength:timeavg" ,"aggr": ["none"]}
+    },
+    "analyses": {
+        "fixed_values": {
+            "outfile": "results/server_2_result.data",
+            "scenarios": {
+                "fixed": {"lambda": "6", "mu_n": "20", "mu_c": "10", "mu_d": "15"},
+                "range": []
+            },
+            "metrics": [
+                {"metric": "ResponseTime_sink", "aggr": "none"},
+                {"metric": "Utilization_net", "aggr": "none"},
+                {"metric": "Utilization_cpu", "aggr": "none"},
+                {"metric": "Utilization_cpu2", "aggr": "none"},
+                {"metric": "Utilization_disk", "aggr": "none"},
+                {"metric": "DroppedJobs_net", "aggr": "none"},
+                {"metric": "DroppedJobs_cpu", "aggr": "none"},
+                {"metric": "DroppedJobs_disk", "aggr": "none"},
+                {"metric": "QLen_net", "aggr": "none"},
+                {"metric": "QLen_cpu", "aggr": "none"},
+                {"metric": "QLen_cpu2", "aggr": "none"},
+                {"metric": "QLen_disk", "aggr": "none"}
+                    ]
+        },
+        "lambda_var": {
+            "outfile": "results/server_2_lambda_var.data",
+            "scenarios": {
+                "fixed": {"mu_n": "20", "mu_c": "10", "mu_d": "15"},
+                "range": ["lambda"]
+            },
+            "metrics": [
+                {"metric": "ResponseTime_sink", "aggr": "none"},
+                {"metric": "Utilization_net", "aggr": "none"},
+                {"metric": "Utilization_cpu", "aggr": "none"},
+                {"metric": "Utilization_cpu2", "aggr": "none"},
+                {"metric": "Utilization_disk", "aggr": "none"},
+                {"metric": "DroppedJobs_net", "aggr": "none"},
+                {"metric": "DroppedJobs_cpu", "aggr": "none"},
+                {"metric": "DroppedJobs_disk", "aggr": "none"},
+                {"metric": "QLen_net", "aggr": "none"},
+                {"metric": "QLen_cpu", "aggr": "none"},
+                {"metric": "QLen_cpu2", "aggr": "none"},
+                {"metric": "QLen_disk", "aggr": "none"}
+                    ]
+        }
+    }
+}
