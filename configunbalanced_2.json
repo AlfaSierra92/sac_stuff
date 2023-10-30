@@ -1,0 +1,24 @@
+{
+    "scenario_schema": {
+        "delta": {"pattern": "**.delta", "type": "real"}
+    },
+    "metrics": {
+        "ResponseTime_sink": {"module": "**.sink", "scalar_name": "lifeTime:mean" ,"aggr": ["none"]},
+        "Utilization_LowLoadSrv": {"module": "**.LowLoadSrv", "scalar_name": "busy:timeavg" ,"aggr": ["none"]},
+        "Utilization_HighLoadSrv": {"module": "**.HighLoadSrv", "scalar_name": "busy:timeavg" ,"aggr": ["none"]}
+    },
+    "analyses": {
+        "delta_var": {
+            "outfile": "results/unbalanced_delta_var.data",
+            "scenarios": {
+                "fixed": {},
+                "range": ["delta"]
+            },
+            "metrics": [
+                {"metric": "ResponseTime_sink", "aggr": "none"},
+                {"metric": "Utilization_LowLoadSrv", "aggr": "none"},
+                {"metric": "Utilization_HighLoadSrv", "aggr": "none"}
+                    ]
+        }
+    }
+}
