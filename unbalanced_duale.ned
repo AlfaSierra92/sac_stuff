@@ -10,7 +10,7 @@ network unbalanced_duale
         double delta = default(0);
 
         LowLoadSrc.interArrivalTime = 1s * exponential(1/lambda);
-        HighLoadSrc.interArrivalTime = 1s * exponential(1/lambda+delta);
+        HighLoadSrc.interArrivalTime = 1s * exponential(1/lambda);
         LowLoadSrv.serviceTime = 1s * exponential(1/(mu+delta)); 
         HighLoadSrv.serviceTime = 1s * exponential(1/(mu-delta)); 
     submodules:
