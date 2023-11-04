@@ -1,0 +1,45 @@
+<html>
+    <link rel="stylesheet" href="/static/colors.css">
+    <body>
+        {% if color == "" %}
+        <table>
+            <tr>
+                {% set cls="rgba" %}
+                <td class="{{cls}}">
+                    LIST
+                </td>
+            </tr>
+            {% for x in color_list %}
+            <tr>
+                {% set cls=x %}
+                <td class="{{cls}}">
+                    <a href="/colors/{{x}}">{{x}}</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% endif %}
+        {% if color != "" %}
+        <h1 {% if color != "white" %} class="{{ color }}" {% endif %}>{{color}}</h1>
+        <table>
+            <tr>
+                {% set cls="rgba" %}
+                <td class="{{cls}}">
+                    RGBA
+                </td>
+                <td class="{{cls}}">
+                    HEX
+                </td>
+            </tr>
+            <tr>
+                {% for x in rgba %}
+                    {% set cls="rgba" %}
+                    <td class="{{cls}}">
+                        {{ x }}
+                    </td>
+                {% endfor %}
+            </tr>
+        </table>
+        {% endif %}
+    </body>
+</html>

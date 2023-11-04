@@ -1,0 +1,82 @@
+td.rgba{
+    text-align: center;
+    border: 1px solid;
+    font-family: sans-serif;
+    padding: 6px;
+    min-width: 100px;
+}
+td.mare{
+    border: 1px solid;
+    font-family: sans-serif;
+    padding: 6px;
+    min-width: 100px;
+}
+.error{
+    color: red;
+}
+td.white{
+    color:white;
+    background-color:white;
+    border: 1px solid;
+    font-family: sans-serif;
+    padding: 6px;
+    min-width: 100px;
+}
+.white{
+    color:white;
+}
+.black{
+    color:black;
+}
+.red{
+    color:red;
+}
+.blue{
+    color:blue;
+}
+.yellow{
+    color:yellow;
+}
+.green{
+    color:green;
+}
+td.black{
+    color:black;
+    background-color:black;
+    border: 1px solid;
+    font-family: sans-serif;
+    padding: 6px;
+    min-width: 100px;
+}
+td.red{
+    color:red;
+    background-color:red;
+    border: 1px solid;
+    font-family: sans-serif;
+    padding: 6px;
+    min-width: 100px;
+}
+td.blue{
+    color:blue;
+    background-color:blue;
+    border: 1px solid;
+    font-family: sans-serif;
+    padding: 6px;
+    min-width: 100px;
+}
+td.yellow{
+    color:yellow;
+    background-color:yellow;
+    border: 1px solid;
+    font-family: sans-serif;
+    padding: 6px;
+    min-width: 100px;
+}
+td.green{
+    color:green;
+    background-color:green;
+    border: 1px solid;
+    font-family: sans-serif;
+    padding: 6px;
+    min-width: 100px;
+}

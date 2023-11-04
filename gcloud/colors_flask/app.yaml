@@ -1,0 +1,8 @@
+runtime: python39 # Specifica la versione di Python che stai utilizzando
+entrypoint: gunicorn app:app # Specifica l'entrypoint, utilizzando Gunicorn per servire l'app Flask
+handlers:
+- url: /static
+  static_dir: static # Specifica la directory in cui saranno ospitate le risorse statiche
+- url: /.*
+  secure: always
+  script: auto # Usa il tuo entrypoint definito sopra
