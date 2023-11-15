@@ -1,0 +1,22 @@
+{
+    "scenario_schema": {
+        "rho": {"pattern": "**.rho", "type": "real"}
+    },
+    "metrics": {
+        "ResponseTime_sink": {"module": "**.sink", "scalar_name": "lifeTime:mean" ,"aggr": ["none"]},
+        "Utilization_LowLoadSrv": {"module": "**.LowLoadSrv", "scalar_name": "busy:timeavg" ,"aggr": ["none"]}
+    },
+    "analyses": {
+        "delta_var": {
+            "outfile": "results/truncated_rho_var.data",
+            "scenarios": {
+                "fixed": {},
+                "range": ["rho"]
+            },
+            "metrics": [
+                {"metric": "ResponseTime_sink", "aggr": "none"},
+                {"metric": "Utilization_LowLoadSrv", "aggr": "none"}    
+                    ]
+        }
+    }
+}
