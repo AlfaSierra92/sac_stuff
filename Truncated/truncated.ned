@@ -12,8 +12,8 @@ network truncated
 
         LowLoadSrc.interArrivalTime = 1s * exponential(1/lambda);
         LowLoadSrv.serviceTime = 1s * truncnormal(1/mu, rho);
-        LowLoadSrc.jobType = default(0);
-        HighLoadSrc.jobType = default(1);
+        //LowLoadSrc.jobType = default(0);
+        
     submodules:
         LowLoadSrc: Source;
         LowLoadSrv: Queue;
