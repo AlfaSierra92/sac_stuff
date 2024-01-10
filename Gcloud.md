@@ -38,7 +38,7 @@ $ gcloud app deploy
 $ gcloud app browse
 ```
 
-## Firestore management
+## Firestore
 ### Credentials setup
 ```bash
 export NAME=webuser
@@ -55,4 +55,38 @@ export GOOGLE_APPLICATION_CREDENTIALS="$(pwd)/credentials.json"
 Perchè abbiamo bisogno di questo passaggio? Nel caso volessimo connetterci a Firestore da un applicazione Flask eseguita in locale (non su app engine).
 
 ### Local vs gcloud db
+Non serve (vedi punto dopo).
 
+### Firestore local emulator
+Per lanciare un comodissimo emulatore Firestore in locale, dare:
+```bash
+$ gcloud emulators firestore start --host-port=127.0.0.1:9000
+```
+Ovviamente bisogna mettere in python la seguente variabile d'ambiente:
+```
+FIRESTORE_EMULATOR_HOST=127.0.0.1:9000
+```
+
+### Python code lines
+```python
+consumi = self.db.collection('consumi').get()  # fetching della raccolta consumi
+
+for x in consumi:  # scorrimento di tutti i documenti all'interno della raccolta
+  ........
+
+h = {
+      'date': date,
+      'value': value
+      }
+self.db.collection('consumi').document(date).set(h)  # aggiungo documenti con campi
+
+consumi_doc = self.db.collection('consumi').document(date).get()  # fetching del documento
+
+test = len(self.db.collection('consumi').get())  # controllo il numero di documenti nella raccolta
+```
+
+Alcune cose (nel caso servano):
+```python
+docs = self.db.collection('consumi').order_by("date", direction=firestore.Query.DESCENDING).limit(2).get()
+# fetcha solo i primi due documenti dalla lista in ordine alfabetico
+```
