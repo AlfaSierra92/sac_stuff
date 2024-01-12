@@ -90,3 +90,64 @@ Alcune cose (nel caso servano):
 docs = self.db.collection('consumi').order_by("date", direction=firestore.Query.DESCENDING).limit(2).get()
 # fetcha solo i primi due documenti dalla lista in ordine alfabetico
 ```
+
+## HTML
+### Declaration in Python
+```python
+class Faceform(Form):
+  # label, topic e submit sono i nomi degli oggetti form
+    label = StringField('Message', [validators.length(max=100)])
+    topic = StringField('topic', [validators.length(max=100)])
+    submit = SubmitField('Submit')
+
+
+class Struct:  # NECESSARIO!
+    def __init__(self, **entries):
+        self.__dict__.update(entries)
+```
+
+### Code lines
+```python
+@app.route('/', methods=['GET', 'POST'])
+def hello_world(): 
+    c = {'Message': ''}
+    if request.method == 'POST':
+      # qui entra quando premi invio
+        cform = Faceform(request.form)
+        if cform.label.data != "":
+            faccialibro_dao.add_chirps(cform.label.data)
+            return 'MEssaggio inserito!'
+        else:
+            messages = faccialibro_dao.get_topics(cform.topic.data)
+            return messages
+    if request.method == 'GET':
+      # se deve visualizzare la pagina con i form vuoti
+        cform = Faceform(obj=Struct(**c))
+        return render_template('index.html', name=c['Message'], form=cform)
+```
+```html
+<form method="post">
+<table class="table" style="width:100%">
+                <tr class="td">
+                  <!-- il primo label è il nome; il secondo è l'attributo -->
+                  <th class="td">{{form.label.label}}</th>
+                </tr>
+                <tr>
+                    <td class="td">{{form.label}}</td>
+                </tr>
+                <tr>
+                  <td class="td"><input type="submit" value="Insert"></td>
+                </tr>
+
+    <tr class="td">
+                  <th class="td">{{form.topic.label}}</th>
+                </tr>
+                <tr>
+                    <td class="td">{{form.topic}}</td>
+                </tr>
+                <tr>
+                  <td class="td"><input type="submit" value="Insert"></td>
+                </tr>
+            </table>
+    </form>
+```
