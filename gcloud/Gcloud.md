@@ -99,6 +99,9 @@ Alcune cose (nel caso servano):
 ```python
 docs = self.db.collection('consumi').order_by("date", direction=firestore.Query.DESCENDING).limit(2).get()
 # fetcha solo i primi due documenti dalla lista in ordine alfabetico
+
+self.db.collection('messages').document(x.id).delete()
+# per cancellare (x.id è il nome del documento!)
 ```
 
 ## HTML
