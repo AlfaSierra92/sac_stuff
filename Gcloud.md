@@ -80,7 +80,17 @@ h = {
       }
 self.db.collection('consumi').document(date).set(h)  # aggiungo documenti con campi
 
-consumi_doc = self.db.collection('consumi').document(date).get()  # fetching del documento
+chirp = self.db.collection('messages').document(ids).get()  # fetching del documento
+if chirp.exists:
+    h = {
+        'id': str(chirp.get('timestamp')),  # fetch singolo campo del doc
+        'message': chirp.get('message'),
+        'timestamp': chirp.get('timestamp')
+    }
+    return h
+else:
+    return None
+
 
 test = len(self.db.collection('consumi').get())  # controllo il numero di documenti nella raccolta
 ```
