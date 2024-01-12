@@ -161,3 +161,18 @@ def hello_world():
             </table>
     </form>
 ```
+
+## Pub/sub
+### Code lines
+```python
+from google.cloud import pubsub_v1
+
+# questa parte qui per il punto 3
+publisher = pubsub_v1.PublisherClient()
+topic_path = publisher.topic_path('travel2-405610', 'hashtags')
+
+# per inviare
+data = messaggio.encode("utf-8")  # punto 3 anche qui
+publisher.publish(topic_path, data)  # e qui
+```
+*Per il subscriber vedere file python subs.py.*
