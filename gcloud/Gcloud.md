@@ -233,3 +233,10 @@ Questo trigger richiama la funzione con un evento simile a questo:
 }
 ```
 *Per lo script vedere file python main.py.*
+
+## Telegram
+```python
+requests.post(
+  'https://api.telegram.org/botxxxx:yyyyy/sendMessage?chat_id=zzzzz&text='+message
+    )
+```
