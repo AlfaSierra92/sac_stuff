@@ -166,6 +166,11 @@ def hello_world():
 ```
 
 ## Pub/sub
+### Activate pub/sub
+```bash
+$ gcloud pubsub topics create hashtags
+$ gcloud pubsub subscriptions create subs --topic hashtags
+```
 ### Code lines
 ```python
 from google.cloud import pubsub_v1
@@ -179,3 +184,52 @@ data = messaggio.encode("utf-8")  # punto 3 anche qui
 publisher.publish(topic_path, data)  # e qui
 ```
 *Per il subscriber vedere file python subs.py.*
+
+## Functions
+### OBBLIGATORI!
+```
+gunicorn<21.0,>=19.2.0
+flask<3.0,>=1.0
+```
+
+### HTTP
+```bash
+$ gcloud functions deploy [FUNCTION_NAME] --runtime [RUNTIME] --trigger-http --allow-unauthenticated
+```
+La funzione specificata da *nome_funzione* viene cercata da gcloud all'interno di un file *main.py* per impostazione predefinita, perché se specifichiamo come runtime python, cercherà un file .py. Quando specifichiamo HTTP come trigger è per ottenere un oggetto richiesta. Il runtime può essere, per esempio, python37.
+Richiamiamo la funzione via terminale con 
+```bash
+$ gcloud functions call [FUNCTION_NAME] --data '{"name": "[NAME]"}'
+```
+oppure via richiesta http
+```bash
+curl -m 70 -X [POST_URI] \
+    -H "Authorization: Bearer $(gcloud auth print-identity-token)" \
+    -H "Content-Type: application/json" \
+    -d '{}'
+```
+
+### Pub/sub
+```bash
+$ gcloud functions deploy [FUNCTION_NAME] --trigger-topic [TOPIC_NAME] --runtime [RUNTIME]
+```
+
+### Firestore
+```bash
+$ gcloud functions deploy [FUNCTION_NAME] --runtime [RUNTIME] --trigger-event "providers/cloud.firestore/eventTypes/document.write" --trigger-resource "projects/[PROJECT_ID]/databases/(default)/documents/{document}/{attribute}" 
+```
+Questo trigger richiama la funzione con un evento simile a questo:
+```json
+{
+    "oldValue": { // Update and Delete operations only
+        A Document object containing a pre-operation document snapshot
+    },
+    "updateMask": { // Update operations only
+        A DocumentMask object that lists changed fields.
+    },
+    "value": {
+        // A Document object containing a post-operation document snapshot
+    }
+}
+```
+*Per lo script vedere file python main.py.*
