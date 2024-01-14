@@ -1,0 +1,85 @@
+{
+    "scenario_schema": {
+        "rho": {"pattern": "**.rho", "type": "real"},
+        "cv": {"pattern": "**.cv", "type": "real"}
+    },
+    "metrics": {
+        "ResponseTime_sink": {"module": "**.sink", "scalar_name": "lifeTime:mean" ,"aggr": ["none"]},
+        "QTim_net": {"module": "**.sink", "scalar_name": "totalQueueingTime:mean" ,"aggr": ["none"]},
+        "ServiceTime": {"module": "**.sink", "scalar_name": "totalServiceTime:mean" ,"aggr": ["none"]}
+    },
+    "analyses": {
+        "r07_cov05": {
+            "outfile": "results/r07_cov05.data",
+            "scenarios": {
+                "fixed": {"rho": "0.7", "cv": "0.5"},
+                "range": []
+            },
+            "metrics": [
+                {"metric": "ResponseTime_sink", "aggr": "none"},
+                {"metric": "QTim_net", "aggr": "none"},
+                {"metric": "ServiceTime", "aggr": "none"}
+                    ]
+        },
+        "r07_cov10": {
+            "outfile": "results/r07_cov10.data",
+            "scenarios": {
+                "fixed": {"rho": "0.7", "cv": "1"},
+                "range": []
+            },
+            "metrics": [
+                {"metric": "ResponseTime_sink", "aggr": "none"},
+                {"metric": "QTim_net", "aggr": "none"},
+                {"metric": "ServiceTime", "aggr": "none"}
+                    ]
+        },
+        "r07_cov15": {
+            "outfile": "results/r07_cov15.data",
+            "scenarios": {
+                "fixed": {"rho": "0.7", "cv": "1.5"},
+                "range": []
+            },
+            "metrics": [
+                {"metric": "ResponseTime_sink", "aggr": "none"},
+                {"metric": "QTim_net", "aggr": "none"},
+                {"metric": "ServiceTime", "aggr": "none"}
+                    ]
+        },
+        "r09_cov05": {
+            "outfile": "results/r09_cov05.data",
+            "scenarios": {
+                "fixed": {"rho": "0.9", "cv": "0.5"},
+                "range": []
+            },
+            "metrics": [
+                {"metric": "ResponseTime_sink", "aggr": "none"},
+                {"metric": "QTim_net", "aggr": "none"},
+                {"metric": "ServiceTime", "aggr": "none"}
+                    ]
+        },
+        "r09_cov10": {
+            "outfile": "results/r09_cov10.data",
+            "scenarios": {
+                "fixed": {"rho": "0.9", "cv": "1"},
+                "range": []
+            },
+            "metrics": [
+                {"metric": "ResponseTime_sink", "aggr": "none"},
+                {"metric": "QTim_net", "aggr": "none"},
+                {"metric": "ServiceTime", "aggr": "none"}
+                    ]
+        },
+        "r09_cov15": {
+            "outfile": "results/r09_cov15.data",
+            "scenarios": {
+                "fixed": {"rho": "0.9", "cv": "1.5"},
+                "range": []
+            },
+            "metrics": [
+                {"metric": "ResponseTime_sink", "aggr": "none"},
+                {"metric": "QTim_net", "aggr": "none"},
+                {"metric": "ServiceTime", "aggr": "none"}
+                    ]
+        }
+    }
+}
