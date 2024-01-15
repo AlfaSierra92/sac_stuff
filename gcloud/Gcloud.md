@@ -166,10 +166,32 @@ def hello_world():
 ```
 
 ## Pub/sub
-### Activate pub/sub
+### Activate pub/sub (gcloud way)
 ```bash
 $ gcloud pubsub topics create hashtags
 $ gcloud pubsub subscriptions create subs --topic hashtags
+```
+
+### Activate pub/sub (Python way)
+```python
+publisher = pubsub_v1.PublisherClient()
+topic_path = publisher.topic_path('travel2-405610', hashtags[0][1:])
+        try:
+            topic = publisher.create_topic(request={"name": topic_path})
+        except:
+            print('Topic already created')
+```
+```python
+publisher = pubsub_v1.PublisherClient()
+subscriber = pubsub_v1.SubscriberClient()
+topic_path = publisher.topic_path('travel2-405610', primo)
+subscription_path = subscriber.subscription_path('travel2-405610', primo+'subs')
+try:
+    subscription = subscriber.create_subscription(
+        request={"name": subscription_path, "topic": topic_path}
+    )
+except:
+    print("Subs already created")
 ```
 ### Code lines
 ```python
