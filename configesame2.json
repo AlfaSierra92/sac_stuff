@@ -1,0 +1,22 @@
+{
+    "scenario_schema": {
+        "f_l": {"pattern": "**.f_l", "type": "real"}
+    },
+    "metrics": {
+        "ResponseTime": {"module": "**.sink", "scalar_name": "lifeTime:mean" ,"aggr": ["none"]}
+        
+    },
+    "analyses": {
+        "SensCV": {
+            "outfile": "results/exam2.data",
+            "scenarios": {
+                "fixed": {},
+                "range": ["f_l"]
+            },
+            "metrics": [
+                {"metric": "ResponseTime", "aggr": "none"}
+                    ]
+        }
+    }
+}
+
