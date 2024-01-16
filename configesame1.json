@@ -1,0 +1,24 @@
+{
+    "scenario_schema": {
+        "f_l": {"pattern": "**.f_l", "type": "real"}
+    },
+    "metrics": {
+        "ResponseTime1": {"module": "**.sink1", "scalar_name": "lifeTime:mean" ,"aggr": ["none"]},
+        "ResponseTime2": {"module": "**.sink2", "scalar_name": "lifeTime:mean" ,"aggr": ["none"]}
+        
+    },
+    "analyses": {
+        "SensCV": {
+            "outfile": "results/exam1.data",
+            "scenarios": {
+                "fixed": {},
+                "range": ["f_l"]
+            },
+            "metrics": [
+                {"metric": "ResponseTime1", "aggr": "none"},
+                {"metric": "ResponseTime2", "aggr": "none"}
+                    ]
+        }
+    }
+}
+
