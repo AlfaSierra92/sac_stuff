@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Travelmates</title>
+</head>
+<body>
+    <h1>Travel mates:</h1>
+    <table>
+        {% for x in travelmates %}
+        <tr>
+            <td>{{ x }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <h1>Common route: </h1>
+    <table>
+        <tr>
+            <td>Departure from: {{ route[0] }}</td>
+        </tr>
+        <tr>
+            <td>Arrive to: {{ route[1] }}</td>
+        </tr>
+    </table>
+</body>
+</html>

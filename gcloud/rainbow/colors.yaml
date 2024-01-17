@@ -1,0 +1,110 @@
+swagger: "2.0"
+info:
+  title: "Colors"
+  description: "Manage color with RGB components"
+  version: "1.0.0"
+host: "assac20231030.appspot.com" # usa project-id.appspot.com !!!
+basePath: "/api/v1"
+schemes:
+  - "https"
+paths:
+    /colors/{colorName}:
+      parameters:
+      - name: colorName
+        in: path
+        description: 'Name of the color'
+        type: string
+        required: true
+      get:
+        description: "Get color name and RGB from color name"
+        operationId: "colorGet"
+        responses:
+          200:
+            description: "Success."
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                red:
+                  type: integer
+                green:
+                  type: integer
+                blue:
+                  type: integer
+          400:
+            description: "Invalid or missing color"
+      post:
+        description: "Add a new color"
+        operationId: "colorPost"
+        consumes:
+          - application/json
+        parameters:
+          - in: body
+            name: color
+            description: "Color object"
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                red:
+                  type: integer
+                  minimum: 0
+                  maximum: 255
+                green:
+                  type: integer
+                  minimum: 0
+                  maximum: 255
+                blue:
+                  type: integer
+                  minimum: 0
+                  maximum: 255
+            required: true
+        responses:
+          201:
+            description: "Success."
+          409:
+            description: "Conflict. The color is already inserted in the database."
+          400:
+            description: "Invalid or missing color"
+      put:
+        description: "Update an existing color"
+        operationId: "colorPut"
+        consumes:
+          - application/json
+        parameters:
+          - in: body
+            name: color
+            description: "Color object"
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                red:
+                  type: integer
+                  minimum: 0
+                  maximum: 255
+                green:
+                  type: integer
+                  minimum: 0
+                  maximum: 255
+                blue:
+                  type: integer
+                  minimum: 0
+                  maximum: 255
+            required: true
+        responses:
+          201:
+            description: "Success."
+          400:
+            description: "Invalid or missing color"
+      delete:
+        description: "Delete an existing color"
+        operationId: "colorDelete"
+        responses:
+          201:
+            description: "Success."
+          400:
+            description: "Invalid or missing color"

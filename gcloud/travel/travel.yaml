@@ -1,0 +1,86 @@
+swagger: "2.0"
+info:
+  version: "1.0"
+  title: "Solo Travelers"
+  description: "Travel with strangers"
+host: "travel_test.appspot.com"
+basePath: "/api/v1"
+schemes:
+  - https
+paths:
+  /travel/{user}/{date}:
+    parameters:
+      - name: user
+        in: path
+        required: true
+        description: "User ID"
+        type: string
+        format: uuid
+      - name: date
+        in: path
+        required: true
+        description: "Date of the departure (format: YYYY-MM-DD)"
+        type: string
+        format: date
+    post:
+      description: "Insert a new travel for the user in the given date"
+      operationId: "PostTravel"
+      consumes:
+        - application/json
+      parameters:
+        - in: body
+          name: TravelDetails
+          required: True
+          description: "Travel Details"
+          schema:
+            $ref: "#/definitions/TravelDetails"
+      responses:
+        201:
+          description: "Success."
+        400:
+          description: "Generic error."
+        409:
+          description: "Conflict. The user has already inserted a travel"
+    get:
+      description: "Get infos of the selected travel"
+      operationId: "GetTravel"
+      responses:
+        200:
+          description: "Return the travel details"
+          schema:
+            $ref: "#/definitions/TravelDetails"
+        404:
+          description: "Generic error."
+  /travel/{user}:
+    parameters:
+      - name: user
+        in: path
+        required: true
+        description: "User ID"
+        type: string
+        format: uuid
+    get:
+      description: "Get infos about common trips"
+      operationId: "TravelList"
+      responses:
+        200:
+          description: "Return the travels list"
+          schema:
+            $ref: "#/definitions/TravelDetails"
+        404:
+          description: "Generic error."
+definitions:
+  TravelDetails:
+    type: object
+    properties:
+      from:
+        type: string
+        minimum: 3
+        maximum: 3
+      to:
+        type: string
+        minimum: 3
+        maximum: 3
+    example:
+      from: 'BLQ'
+      to: 'CGD'

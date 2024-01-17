@@ -1,0 +1,46 @@
+# LISTA COLORI
+# curl -v https://assac20231030.oa.r.appspot.com/api/v1/colors/
+GET https://assac20231030.oa.r.appspot.com/api/v1/colors/
+
+###
+
+# SELEZIONA COLORE
+# curl -v http://127.0.0.1:5000/api/v1/colors/viva
+GET http://127.0.0.1:5000/api/v1/colors/viva
+
+###
+
+# AGGIORNA COLORE
+# curl -d '{"name": "viva","red": 245,"green": 2,"blue": 255}' -H "Content-Type: application/json" -v -X PUT https://assac20231030.oa.r.appspot.com/api/v1/colors/viva
+PUT https://assac20231030.oa.r.appspot.com/api/v1/colors/viva
+Content-Type: application/json
+
+{
+  "name": "viva",
+  "red": 245,
+  "green": 2,
+  "blue": 255
+}
+
+###
+
+# INSERISCE COLORE
+# curl -d '{"name": "viva","red": 245,"green": 2,"blue": 255}' -H "Content-Type: application/json" -v -X POST https://assac20231030.oa.r.appspot.com/api/v1/colors/viva
+POST https://assac20231030.oa.r.appspot.com/api/v1/colors/viva
+Content-Type: application/json
+
+{
+  "name": "viva",
+  "red": 245,
+  "green": 2,
+  "blue": 255
+}
+
+###
+
+# CANCELLA COLORE
+# curl -X DELETE -v https://assac20231030.oa.r.appspot.com/api/v1/colors/blue
+DELETE https://assac20231030.oa.r.appspot.com/api/v1/colors/viva
+
+###
+

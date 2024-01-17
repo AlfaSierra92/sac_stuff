@@ -1,0 +1,47 @@
+# LISTA COLORI
+# curl -v http://127.0.0.1:5000/api/v1/colors/
+GET http://127.0.0.1:5000/api/v1/colors/
+
+###
+
+# SELEZIONA COLORE
+# curl -v http://127.0.0.1:5000/api/v1/colors/viva
+GET http://127.0.0.1:5000/api/v1/colors/viva
+
+###
+
+
+# AGGIORNA COLORE
+# curl -d '{"name": "viva","red": 245,"green": 2,"blue": 255}' -H "Content-Type: application/json" -v -X PUT http://127.0.0.1:5000/api/v1/colors/viva
+PUT http://127.0.0.1:5000/api/v1/colors/viva
+Content-Type: application/json
+
+{
+  "name": "viva",
+  "red": 245,
+  "green": 2,
+  "blue": 255
+}
+
+###
+
+# INSERISCE COLORE
+# curl -d '{"name": "viva","red": 245,"green": 2,"blue": 255}' -H "Content-Type: application/json" -v -X POST http://127.0.0.1:5000/api/v1/colors/viva
+POST http://127.0.0.1:5000/api/v1/colors/viva
+Content-Type: application/json
+
+{
+  "name": "viva",
+  "red": 245,
+  "green": 2,
+  "blue": 255
+}
+
+###
+
+# CANCELLA COLORE
+# curl -X DELETE -v http://127.0.0.1:5000/api/v1/colors/blue
+DELETE http://127.0.0.1:5000/api/v1/colors/viva
+
+###
+

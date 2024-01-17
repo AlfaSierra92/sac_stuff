@@ -1,0 +1,23 @@
+###
+
+# curl -d '{"from": "blq","to": "bsi"}' -H "Content-Type: application/json" -v -X POST http://127.0.0.1:5000/api/v1/travel/antonio/2023-11-18
+POST https://travel2-405610.oa.r.appspot.com/api/v1/travel/megan/2023-11-20
+Content-Type: application/json
+
+{
+  "from": "blq",
+  "to": "bsi"
+}
+
+###
+
+# curl -v http://127.0.0.1:5000/api/v1/colors/
+GET https://travel2-405610.oa.r.appspot.com/api/v1/travel/antonio/2023-11-18
+
+###
+
+# curl -v http://127.0.0.1:5000/api/v1/colors/
+GET https://travel2-405610.oa.r.appspot.com/api/v1/travel/luca
+
+###
+
