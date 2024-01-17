@@ -1,0 +1,6 @@
+gunicorn<21.0,>=19.2.0
+flask<3.0,>=1.0
+flask_restful
+google-cloud-firestore
+google-cloud-pubsub
+wtforms
