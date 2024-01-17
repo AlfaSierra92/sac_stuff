@@ -2,15 +2,18 @@ Primo punto
 
 #	ResponseTime	sigma(ResponseTime)
 0.29585281034768	0.006266995495151374
-Intervallo di confidenza: 0.295+- 0.006
+Intervallo di confidenza al 67% : 0.29585281034768 +- 0.006266995495151374
 
 Secondo punto
 
-All'incirca 0.50. (Da simulazione)
+Da simulazione abbiamo trovato un valore circa uguale a 0.50. (Da simulazione)
+Nella teoria, basta calcolare:
 
 1/(mu-lamda*fl)=0.20
 
+
 Punto 3
+
 #f_l	ResponseTime	sigma(ResponseTime)
 0.1	0.191129328943408	0.00017632295369353763
 0.2	0.18491163277713402	0.00018524132614876327
